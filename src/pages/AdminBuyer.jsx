@@ -7,7 +7,9 @@ const AdminBuyer = () => {
 
   const fetchBuyerCount = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/buyer/count");
+      const res = await axios.get(
+        "https://gearbox-backend-8c3f.onrender.com/api/buyer/count"
+      );
       setBuyerCount(res.data.count);
     } catch (error) {
       console.log(error);

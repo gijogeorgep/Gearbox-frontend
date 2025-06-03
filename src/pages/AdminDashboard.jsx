@@ -55,7 +55,9 @@ const AdminDashboard = () => {
 
   const fetchSellercount = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/seller/count");
+      const res = await axios.get(
+        "https://gearbox-backend-8c3f.onrender.com/api/seller/count"
+      );
       setSellercount(res.data.count);
     } catch (error) {
       console.log(error);
@@ -64,7 +66,9 @@ const AdminDashboard = () => {
 
   const fetchBuyerCount = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/buyer/count");
+      const res = await axios.get(
+        "https://gearbox-backend-8c3f.onrender.com/api/buyer/count"
+      );
       setBuyercount(res.data.count);
     } catch (error) {
       console.log(error);
@@ -74,7 +78,7 @@ const AdminDashboard = () => {
   const fetchItemsCount = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/product/count"
+        "https://gearbox-backend-8c3f.onrender.com/api/product/count"
       );
       setItemsCount(response.data.count);
     } catch (error) {
@@ -85,7 +89,7 @@ const AdminDashboard = () => {
   const fetchItemTypes = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/product/itemtypes"
+        "https://gearbox-backend-8c3f.onrender.com/api/product/itemtypes"
       );
       const data = response.data.itemtypes;
 

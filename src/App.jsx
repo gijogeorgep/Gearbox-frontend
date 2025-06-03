@@ -30,20 +30,22 @@ import MyBooking from "./pages/MyBooking";
 import AdminBuyer from "./pages/AdminBuyer";
 import ReturnPolicy from "./pages/ReturnPolicy";
 import CheckOut from "./pages/CheckOut";
-import ServicePage from "./pages/ServicePage";     
+import ServicePage from "./pages/ServicePage";
 
 function App() {
   const [admin, setAdmin] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-
   const fetchAdmin = async () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return setIsLoading(false);
-      const response = await axios.get("http://localhost:4000/api/admin/home", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://gearbox-backend-8c3f.onrender.com/api/admin/home",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setAdmin(response.data.doc);
       setIsLoading(false);
     } catch (error) {
@@ -51,8 +53,6 @@ function App() {
       setIsLoading(false);
     }
   };
-
-
 
   useEffect(() => {
     fetchAdmin();
