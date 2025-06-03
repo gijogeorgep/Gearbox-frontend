@@ -1,0 +1,48 @@
+.animate1 {
+  animation: myanimate;
+  animation-duration: 1s;
+}
+
+.animate2 {
+  animation: myanimate1;
+  animation-duration: 1s;
+}
+
+.textitem {
+  animation: textanimate;
+  animation-duration: 1s;
+}
+
+@keyframes myanimate {
+  0% {
+    transform: translateX(200px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+}
+
+@keyframes myanimate1 {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+}
+
+@keyframes textanimate {
+  0% {
+    transform: translate3d(20%);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translate3d(70%);
+    opacity: 100%;
+  }
+}
