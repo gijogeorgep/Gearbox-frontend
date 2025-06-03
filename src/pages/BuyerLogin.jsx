@@ -13,7 +13,7 @@ const BuyerLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/buyer/login",
+        "https://gearbox-backend-8c3f.onrender.com/api/buyer/login",
         { username, password }
       );
       localStorage.setItem("token", response.data.token);

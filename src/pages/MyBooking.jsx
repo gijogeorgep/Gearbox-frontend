@@ -13,7 +13,7 @@ const MyBooking = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:4000/api/rentrequest/requestForBuyer",
+        "https://gearbox-backend-8c3f.onrender.com/api/rentrequest/requestForBuyer",
         {
           headers: {
             Authorization: `Bearer ${token}`,

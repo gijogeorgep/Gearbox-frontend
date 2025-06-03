@@ -19,7 +19,7 @@ const BuyerProfile = () => {
       console.log("token is:", token);
 
       const response = await axios.get(
-        "http://localhost:4000/api/buyer/buyerprofile",
+        "https://gearbox-backend-8c3f.onrender.com/api/buyer/buyerprofile",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

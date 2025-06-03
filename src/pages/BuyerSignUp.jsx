@@ -26,7 +26,7 @@ const BuyerSignUp = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/buyer/create",
+        "https://gearbox-backend-8c3f.onrender.com/api/buyer/create",
         {
           name,
           username,
@@ -56,8 +56,6 @@ const BuyerSignUp = () => {
           otp,
         }
       );
-      
-    
 
       if (response.data) {
         setEmailVerified(true);
