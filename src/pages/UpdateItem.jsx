@@ -32,7 +32,7 @@ const UpdateItem = () => {
         console.log(`Fetching item data for ID: ${itemId}`);
 
         const response = await axios.get(
-          `http://localhost:4000/api/product/${itemId}`,
+          `https://gearbox-backend-8c3f.onrender.com/api/product/${itemId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -42,17 +42,17 @@ const UpdateItem = () => {
         const item = response.data;
 
         setSelectedItem(item.itemType);
-        setBrand(item.brand );
-        setImageUrl(item.imageUrl );
+        setBrand(item.brand);
+        setImageUrl(item.imageUrl);
         setSmallImage1(
           item.smallImages && item.smallImages[0] ? item.smallImages[0] : null
         );
         setSmallImage2(
           item.smallImages && item.smallImages[1] ? item.smallImages[1] : null
         );
-        setName(item.name );
-        setDescription(item.description );
-        setLocation(item.location );
+        setName(item.name);
+        setDescription(item.description);
+        setLocation(item.location);
 
         // Handle description points with fallback
         if (item.detailedDescription && item.detailedDescription.length > 0) {
@@ -85,7 +85,7 @@ const UpdateItem = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:4000/api/seller/sellerprofile",
+          "https://gearbox-backend-8c3f.onrender.com/api/seller/sellerprofile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -161,64 +161,65 @@ const UpdateItem = () => {
     }
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!imageUrl) {
-    alert("Please upload the main image!");
-    return;
-  }
-
-  setIsUploading(true);
-  try {
-    const token = localStorage.getItem("token");
-    const formData = {
-      email: sellerData?.email,
-      itemType: selectedItem,
-      brand,
-      name,
-      description,
-      detailedDescription: descriptionPoints.filter(
-        (point) => point.trim() !== ""
-      ),
-      imageUrl,
-      smallImages: [smallImage1, smallImage2].filter(Boolean),
-      rate,
-      location,
-      cautionDeposit,
-      tutorialLink,
-    };
-
-    console.log("Sending update request for item:", itemId);
-    console.log("Update data:", formData);
-
-    const response = await axios.put(
-      `http://localhost:4000/api/product/update/${itemId}`, 
-      formData, 
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-
-    console.log("Update response:", response.data);
-    alert("Item updated successfully!");
-  } catch (error) {
-    console.error("Update error:", error);
-    if (error.response) {
-      console.error("Server response:", error.response.data);
-      console.error("Status code:", error.response.status);
+    if (!imageUrl) {
+      alert("Please upload the main image!");
+      return;
     }
-    alert(`Failed to update item: ${error.response?.data?.msg || "Try again."}`);
-  }
-  setIsUploading(false);
-};
+
+    setIsUploading(true);
+    try {
+      const token = localStorage.getItem("token");
+      const formData = {
+        email: sellerData?.email,
+        itemType: selectedItem,
+        brand,
+        name,
+        description,
+        detailedDescription: descriptionPoints.filter(
+          (point) => point.trim() !== ""
+        ),
+        imageUrl,
+        smallImages: [smallImage1, smallImage2].filter(Boolean),
+        rate,
+        location,
+        cautionDeposit,
+        tutorialLink,
+      };
+
+      console.log("Sending update request for item:", itemId);
+      console.log("Update data:", formData);
+
+      const response = await axios.put(
+        `https://gearbox-backend-8c3f.onrender.com/api/product/update/${itemId}`,
+        formData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      console.log("Update response:", response.data);
+      alert("Item updated successfully!");
+    } catch (error) {
+      console.error("Update error:", error);
+      if (error.response) {
+        console.error("Server response:", error.response.data);
+        console.error("Status code:", error.response.status);
+      }
+      alert(
+        `Failed to update item: ${error.response?.data?.msg || "Try again."}`
+      );
+    }
+    setIsUploading(false);
+  };
   return (
     <div className="relative min-h-screen bg-[#0C0A0B] overflow-hidden">
       <Navbar />
       <div className="flex flex-col lg:flex-row gap-6 p-4 sm:p-6">
         {/* Sidebar */}
         <div className="w-full lg:w-60 bg-white/10 rounded-xl border border-white/10 backdrop-blur-sm flex flex-col items-center py-6">
-          
           <SellerDasboardSidebar />
         </div>
 
