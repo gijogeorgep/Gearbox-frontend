@@ -13,7 +13,7 @@ const MyList = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:4000/api/product/seller/products`,
+          `https://gearbox-frontend.onrender.com/api/product/seller/products`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

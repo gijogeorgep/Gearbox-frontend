@@ -13,7 +13,7 @@ const SellerDasboardSidebar = () => {
         const token = localStorage.getItem("token");
         console.log("Token:", token);
         const response = await axios.get(
-          "http://localhost:4000/api/seller/sellerprofile",
+          "https://gearbox-frontend.onrender.com/api/seller/sellerprofile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

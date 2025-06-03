@@ -13,7 +13,7 @@ const RentalRequest = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/rentrequest/requestForSeller",
+        "https://gearbox-frontend.onrender.com/api/rentrequest/requestForSeller",
         {
           headers: {
             Authorization: `Bearer ${token}`,
