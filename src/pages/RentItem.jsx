@@ -25,7 +25,7 @@ const RentItem = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/product/${id}`
+          `https://gearbox-backend-8c3f.onrender.com/api/product/${id}`
         );
         setProduct(response.data);
         console.log(response.data);
@@ -39,7 +39,6 @@ const RentItem = () => {
   }, [id]);
 
 
- 
 
   const validateForm = () => {
     let isValid = true;
