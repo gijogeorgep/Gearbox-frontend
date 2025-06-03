@@ -70,11 +70,14 @@ const SellerSignUp = () => {
 
   const handleVerifyEmail = async () => {
     try {
-      await axios.post("http://localhost:4000/api/seller/sent-otp", {
-        name,
-        username,
-        email,
-      });
+      await axios.post(
+        "https://gearbox-backend-8c3f.onrender.com/api/seller/sent-otp",
+        {
+          name,
+          username,
+          email,
+        }
+      );
       setOtpStep(true);
       alert("OTP sent to your email. Please enter the OTP to verify.");
     } catch (error) {

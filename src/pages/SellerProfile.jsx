@@ -27,7 +27,7 @@ const SellerProfile = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:4000/api/seller/sellerprofile",
+          "https://gearbox-frontend.onrender.com/api/seller/sellerprofile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

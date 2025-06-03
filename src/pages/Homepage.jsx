@@ -27,7 +27,9 @@ const Homepage = () => {
   // Fetch products from the backend
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/product/all");
+      const res = await axios.get(
+        "https://gearbox-backend-8c3f.onrender.com/api/product/all"
+      );
       console.log(res.data);
       setProducts(res.data.products);
     } catch (error) {

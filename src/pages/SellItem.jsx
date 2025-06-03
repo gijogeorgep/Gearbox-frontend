@@ -28,7 +28,7 @@ const SellItem = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:4000/api/seller/sellerprofile",
+          "https://gearbox-backend-8c3f.onrender.com/api/seller/sellerprofile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -147,7 +147,7 @@ const SellItem = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:4000/api/product/create",
+        "https://gearbox-backend-8c3f.onrender.com/api/product/create",
         formData,
         {
           headers: {
