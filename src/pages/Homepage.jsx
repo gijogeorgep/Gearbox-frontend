@@ -12,6 +12,8 @@ import AboutUs from "../components/AboutUs";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [filters, setFilters] = useState({
     name: "",
     location: "",
@@ -25,17 +27,20 @@ const Homepage = () => {
   };
 
   // Fetch products from the backend
-  const fetchProducts = async () => {
-    try {
-      const res = await axios.get(
-        "https://gearbox-backend-8c3f.onrender.com/api/product/all"
-      );
-      console.log(res.data);
-      setProducts(res.data.products);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
+ const fetchProducts = async () => {
+  setLoading(true); // Corrected
+  try {
+    const res = await axios.get(
+      "https://gearbox-backend-8c3f.onrender.com/api/product/all"
+    );
+    setProducts(res.data.products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+  } finally {
+    setLoading(false); // Stop loading
+  }
+};
+
 
   const serviceRef = useRef(null);
 
@@ -77,17 +82,23 @@ const Homepage = () => {
       <Hero />
       <Items />
       <FilterItem onChange={handleFilterChange} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <Cards key={product._id} product={product} />
-          ))
-        ) : (
-          <p className="text-white text-center col-span-full">
-            No matching products found.
-          </p>
-        )}
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4">
+{loading ? (
+  <div className="flex justify-center items-center col-span-full py-10">
+    <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+  </div>
+) : filteredProducts.length > 0 ? (
+  filteredProducts.map((product) => (
+    <Cards key={product._id} product={product} />
+  ))
+) : (
+  <p className="text-white text-center col-span-full">
+    No matching products found.
+  </p>
+)}
+
+</div>
+
       {/* <div ref={serviceRef}>
         <Service />
       </div> */}

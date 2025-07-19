@@ -164,6 +164,10 @@ const RentItem = () => {
     return <div className="text-red-500 text-center mt-10">{error}</div>;
   }
 
+  
+
+
+
   return (
     <div className="bg-[#2d2d2d] min-h-screen text-white overflow-hidden">
       <ToastContainer />
