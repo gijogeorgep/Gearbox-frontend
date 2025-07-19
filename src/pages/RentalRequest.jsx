@@ -35,7 +35,7 @@ const RentalRequest = () => {
   const requestCount = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/rentrequest/count"
+        "https://gearbox-backend-8c3f.onrender.com/api/rentrequest/count"
       );
       console.log(response.count);
     } catch (error) {
@@ -52,7 +52,7 @@ const RentalRequest = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:4000/api/rentrequest/update/${requestId}`,
+        `https://gearbox-backend-8c3f.onrender.com/api/rentrequest/update/${requestId}`,
         { status },
         {
           headers: {

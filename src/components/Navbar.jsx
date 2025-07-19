@@ -103,7 +103,11 @@ const Navbar = () => {
               <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                 HOME
               </Link>
-              <span onClick={() => setIsMobileMenuOpen(false)}>SERVICE</span>
+
+              <Link to="/service" onClick={() => setIsMobileMenuOpen(false)}>
+                SERVICE
+              </Link>
+
               <div className="relative">
                 <span className="block mb-2">LOGIN</span>
                 <div className="pl-3 flex flex-col gap-2 text-sm text-white/90">
